@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Department>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Index";
+}
+<h1>All Departments</h1>
+<br />
+<a asp-action="Create" class="btn btn-primary"> Create new Department</a>
+<br />
+<br />
+@* <div class="alert alert-danger">
+    <h3>@ViewData["Message"]</h3>
+</div>
+
+<div class="alert alert-success">
+    <h3>@ViewBag.Message2</h3>
+</div> *@
+
+@if(TempData["Message"]!=null)
+{
+    <div class="alert alert-success">
+        <h3>@TempData["Message"]</h3>
+    </div> 
+}
+<br />
+@if (Model.Count() > 0)
+{
+    <table>
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(x=>x.Code)</th>
+                <th>@Html.DisplayNameFor(x=>x.Name)</th>
+                <th>Details</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Code</td>
+                    <td>@item.Name</td>
+                    <td>
+                        <a class="btn btn-success" asp-controller="Department" asp-action="Dtails" asp-route-id="@item.Id">
+                            <i class="fas fa-eye"></i>Details
+                        </a>
+                    </td>
+                     <td>
+                        <a class="btn btn-success" asp-controller="Department" asp-action="Update" asp-route-id="@item.Id">
+                            <i class="fas fa-eye"></i>Update
+                        </a>
+                    </td>
+                    <td>
+                        <a class="btn btn-success" asp-controller="Department" asp-action="Delete" asp-route-id="@item.Id">
+                            <i class="fas fa-eye"></i>Delete
+                        </a>
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-warning">
+        <h3>No Department found</h3>
+    </div>
+}
+

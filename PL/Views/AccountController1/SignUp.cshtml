@@ -1,0 +1,33 @@
+﻿@model RegisterVM
+@{
+    ViewData["Title"]="SignUp";
+    Layout = "~/Views/Shared/_AuthenticationLayout.cshtml";
+}
+<div class="main-agileinfo">
+    <div class="agileits-top">
+        <form asp-action="SignUp">
+            <input class="text email" type="email" asp-for="@Model.Email" placeholder="Email" required="" />
+            <span asp-validation-for="@Model.Email" class="text-danger"></span>
+            <input class="text " type="password" asp-for="@Model.PassWord" placeholder="password" required="" />
+            <span asp-validation-for="@Model.PassWord" class="text-danger"></span>
+            <input class="text w3lpass" type="PassWord" asp-for="@Model.ConfirmPassWord" placeholder="ConfirmPassWord" required="" />
+            <span asp-validation-for="@Model.ConfirmPassWord" class="text-danger"></span>
+
+            <div class="wthree-text">
+                <label class="anim">
+                    <input type="checkbox" asp-for="IsAgree" class="checkbox" required="" />
+                    <span>I Agree to the Terms & Conditions </span>
+
+                </label>
+                <div class="clear"></div>
+
+            </div>
+            <input type="submit" value="SignUp" />
+        
+        </form>
+        <p>Have an Account?<a asp-action="Login">Login Now!</a></p>
+    </div>
+</div>
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

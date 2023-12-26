@@ -1,0 +1,22 @@
+﻿@model EmployeeVM
+
+@{
+    ViewData["Title"] = "Index";
+    //var departments = new SelectList(ViewBag.Department2, "Id", "Name");
+}
+
+
+<div class="row">
+    <div class="col-6">
+        <form asp-action="Update" asp-controller="Employee" enctype="multipart/form-data">
+
+
+            <partial name="PartialViews/CreateUpdatePartialView" />
+
+
+            <input type="submit" value="Add" class="btn btn-primary" />
+            <a asp-action="Index" class="btn btn-dark">Back To List</a>
+        </form>
+    </div>
+</div>
+
